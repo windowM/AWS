@@ -17,6 +17,6 @@ public class TestController {
     @ResponseBody
     public String test() {
         TestEntity entity= testRepository.findById(1L).orElse(null);
-        return entity.getName()+":"+entity.getPassword();
+        return entity.getName()+":"+entity.getPassword()+"update deploy";
     }
 }
