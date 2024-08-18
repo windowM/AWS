@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull changom/awstestimg
+            docker pull changhom/awstestimg
             docker stop server
             docker run -d --rm --name server -p 8080:8080 changhom/awstestimg
             
