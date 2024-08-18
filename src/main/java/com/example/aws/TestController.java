@@ -12,6 +12,7 @@ public class TestController {
     @GetMapping("/")
     public String test() {
         TestEntity entity = testRepository.findById(1L).orElse(null);
+        System.out.println("test1");
         return entity.name+":"+entity.password;
     }
 }
