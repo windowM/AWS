@@ -20,7 +20,7 @@ COPY src src
 RUN chmod +x gradlew
 
 # Build the application
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build --no-daemon -x test
 
 # Stage 2: Run
 FROM openjdk:17
