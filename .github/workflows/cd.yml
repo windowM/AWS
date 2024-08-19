@@ -43,8 +43,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo docker pull changhom/awstestimg
-            sudo docker stop changhom/awstestimg || true
-            sudo docker run -d --rm --name --file-env .env server -p 8080:8080 changhom/awstestimg
+            sudo docker run --file-env .env -p 8080:8080 changhom/awstestimg
             
   #     깡 배포
   #     - name: Upload artifact
