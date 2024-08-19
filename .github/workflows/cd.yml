@@ -42,6 +42,6 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo echo "${{ secrets.ENV }} > .env
+            sudo echo "${{ secrets.ENV }}" > .env
             sudo docker pull changhom/awstestimg
             sudo docker run --env-file .env -p 8080:8080 changhom/awstestimg
