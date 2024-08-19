@@ -43,8 +43,14 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo echo "${{ secrets.ENV }}" > .env
-            sudo docker kill awstesting || true
-            sudo docker rm awstesing || true
+            
+            if sudo docker ps -q -f "name=awstesting" > /dev/null; then
+              echo "Stopping existing container..."
+              sudo docker kill awstesting || true
+              sudo docker rm awstesting || true
+            else
+              echo "No existing container found."
+            fi
             
             sudo docker pull changhom/awstestimg
             sudo docker run --name awstesting --env-file .env -p 8080:8080 changhom/awstestimg
