@@ -50,6 +50,13 @@ jobs:
               sudo docker stop "$existing_container_id"
               sudo docker rm "$existing_container_id"
             fi
+
+            # Remove any existing images if necessary
+            existing_image_id=$(sudo docker images -q changhom/awstestimg)
+            if [ -n "$existing_image_id" ]; then
+              echo "Removing existing image $existing_image_id"
+              sudo docker rmi "$existing_image_id" || true
+            fi
             
             sudo docker pull changhom/awstestimg
             sudo docker run --env-file .env -p 8080:8080 changhom/awstestimg
