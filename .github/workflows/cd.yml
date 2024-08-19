@@ -53,4 +53,4 @@ jobs:
             fi
             
             sudo docker pull changhom/awstestimg
-            sudo docker run --name awstesting --env-file .env -p 8080:8080 changhom/awstestimg
+            sudo docker run -d --name awstesting --env-file .env -p 8080:8080 changhom/awstestimg
