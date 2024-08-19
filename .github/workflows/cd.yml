@@ -43,5 +43,13 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo echo "${{ secrets.ENV }}" > .env
+
+            existing_container_id=$(sudo docker ps -q -f "ancestor=changhom/awstestimg" -f "publish=8080")
+            if [ -n "$existing_container_id" ]; then
+              echo "Stopping existing container $existing_container_id"
+              sudo docker stop "$existing_container_id"
+              sudo docker rm "$existing_container_id"
+            fi
+            
             sudo docker pull changhom/awstestimg
             sudo docker run --env-file .env -p 8080:8080 changhom/awstestimg
