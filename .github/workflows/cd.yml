@@ -44,7 +44,7 @@ jobs:
           script: |
             docker pull changhom/awstestimg
             docker stop server
-            docker run -d --rm --name server -p 8080:8080 changhom/awstestimg
+            docker run -d --rm --name --file-env .env server -p 8080:8080 changhom/awstestimg
             
   #     깡 배포
   #     - name: Upload artifact
