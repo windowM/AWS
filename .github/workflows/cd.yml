@@ -16,9 +16,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # - name: Generated Environment Variables File
-      #   run: |
-      #     echo "${{ secrets.ENV }}" > .env 
+      - name: Generated Environment Variables File
+        run: |
+          echo "${{ secrets.ENV }}" > .env 
   
           
       - name: Run chmod to make gradlew executable
